@@ -1,20 +1,21 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import Link from 'next/link';
-import { Listbox, Transition } from '@headlessui/react';
-import {
-  MdArrowBack,
-  MdCheckCircle,
-  MdOutlineSearch,
-  MdRadioButtonUnchecked,
-} from 'react-icons/md';
+import { Popover, Transition } from '@headlessui/react';
+import { MdChevronRight, MdOutlineSearch } from 'react-icons/md';
+import { FaMobileAlt } from 'react-icons/fa';
 import { WhiteLogo } from './Logo';
+import SelectCity from './SelectCity';
+import Categories from './Categories';
+import { Button } from './Button';
 import HamburgerMenu from '@/icons/HamburgerMenu';
-import MalaysiaFlag from '@/icons/MalaysiaFlag';
+import CloseMenu from '@/icons/CloseMenu';
+import Deals from '@/icons/Deals';
+import PayPlus from '@/icons/PayPlus';
 
 const Header = () => {
   return (
     <>
-      <header className='bg-primary py-1.5'>
+      <header className='z-10 bg-primary py-1.5 shadow-md'>
         <div className='flex px-4'>
           <div className='flex items-center w-full'>
             <div className='flex mr-4'>
@@ -32,12 +33,13 @@ const Header = () => {
             </div>
           </div>
           <div className='ml-auto h-full'>
-            <button className='p-2 pr-0 text-white'>
-              <HamburgerMenu />
-            </button>
+            <div className='p-2 pr-0'>
+              <MobileMenu />
+            </div>
           </div>
         </div>
       </header>
+      <Categories />
     </>
   );
 };
@@ -58,85 +60,72 @@ const SearchInput = () => {
         <input
           type='text'
           placeholder='Search for deals'
-          className='bg-transparent pl-0 border-0 text-sm focus:border-0 placeholder:text-gray-300 w-full'
+          className='bg-transparent pl-0 border-0 text-sm placeholder:text-gray-300 w-full focus:ring-0'
         />
       </div>
     </form>
   );
 };
 
-const cities = [
-  { name: 'Kuala Lumpur' },
-  { name: 'Penang' },
-  { name: 'Johor Bahru' },
-  { name: 'Ipoh' },
-  { name: 'Kota Kinabalu' },
-  { name: 'Kuching' },
-  { name: 'Alor Setar' },
-  { name: 'Batu Pahat' },
-  { name: 'Bintulu' },
-  { name: 'Kampar' },
-  { name: 'Kelantan' },
-  { name: 'Kluang' },
-  { name: 'Kulim' },
-  { name: 'Malacca' },
-  { name: 'Miri' },
-  { name: 'Muar' },
-];
-
-const SelectCity = () => {
-  const [selected, setSelected] = useState(cities[0]);
+const MobileMenu = () => {
   return (
-    <Listbox value={selected} onChange={setSelected}>
-      <div className=''>
-        <Listbox.Button className='flex items-center'>
-          <MalaysiaFlag />
-        </Listbox.Button>
-        <Transition
-          as={Fragment}
-          leave='transition ease-in duration-100'
-          leaveFrom='opacity-100'
-          leaveTo='opacity-0'
-        >
-          <Listbox.Options className='absolute inset-0 w-full overflow-auto bg-gray-100'>
-            <div className='fixed flex z-10 w-full bg-white justify-center p-4 text-sm border-b shadow-md'>
-              <Listbox.Button className='flex items-center absolute left-2'>
-                <MdArrowBack size={20} />
-              </Listbox.Button>
-              <span>Select City</span>
-            </div>
+    <Popover>
+      {({ open }) => (
+        <>
+          <Popover.Button className='flex'>
+            {open ? <CloseMenu /> : <HamburgerMenu />}
+          </Popover.Button>
+          <Popover.Overlay className='bg-black opacity-30 fixed inset-0 mt-12' />
 
-            <div className='mt-6 bg-white text-sm'>
-              <div className='flex items-center p-3 border-b border-gray-100'>
-                <MalaysiaFlag width={16} height={16} />{' '}
-                <span className='ml-1 font-semibold uppercase text-xs'>
-                  Malaysia
-                </span>
+          <Transition
+            as={Fragment}
+            enter='transition ease-out duration-200'
+            enterFrom='opacity-0 -translate-y-1'
+            enterTo='opacity-100 -translate-y-0'
+            leave='transition ease-in duration-150'
+            leaveFrom='opacity-100 -translate-y-0'
+            leaveTo='opacity-0 -translate-y-1'
+          >
+            <Popover.Panel className='absolute right-0 left-0 z-10 mt-4 bg-gray-100'>
+              <div className='bg-white p-4 mb-4 border-y'>
+                <p className='font-medium text-base text-center'>
+                  Only Available on the App
+                </p>
+                <div className='flex justify-center gap-8 py-4'>
+                  <div className='flex flex-col items-center'>
+                    <Deals width={32} height={32} />
+                    <span className='mt-2 block text-sm text-primary font-medium'>
+                      Rewards
+                    </span>
+                  </div>
+                  <div className='flex flex-col items-center'>
+                    <PayPlus width={32} height={32} />
+                    <span className='mt-2 block text-sm text-primary font-medium'>
+                      eCards
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <Button fullWidth>
+                    <FaMobileAlt size={16} className='mr-1' /> Get The App
+                  </Button>
+                </div>
               </div>
-              {cities.map((city, cityIdx) => (
-                <Listbox.Option
-                  key={cityIdx}
-                  value={city}
-                  className='relative flex items-center p-3 border-b border-gray-100'
-                >
-                  {({ selected }) => (
-                    <div className='flex items-center w-full'>
-                      <span className='block truncate'>{city.name}</span>
-                      <span className='ml-auto text-primary'>
-                        {selected ? (
-                          <MdCheckCircle size={20} />
-                        ) : (
-                          <MdRadioButtonUnchecked size={20} />
-                        )}
-                      </span>
-                    </div>
-                  )}
-                </Listbox.Option>
-              ))}
-            </div>
-          </Listbox.Options>
-        </Transition>
-      </div>
-    </Listbox>
+              <div className='bg-white p-4'>
+                <p className='font-medium text-base text-center'>
+                  Support our movement to save local businesses
+                </p>
+                <div className='mt-4'>
+                  <Button fullWidth variant='outline'>
+                    <span className='font-bold'> See Our Fave</span>
+                    <MdChevronRight size={20} className='ml-1' />
+                  </Button>
+                </div>
+              </div>
+            </Popover.Panel>
+          </Transition>
+        </>
+      )}
+    </Popover>
   );
 };
