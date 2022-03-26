@@ -1,10 +1,15 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import { Popover, Transition } from '@headlessui/react';
-import { MdChevronRight, MdOutlineSearch } from 'react-icons/md';
+import {
+  MdChevronRight,
+  MdOutlineSearch,
+  MdPhoneAndroid,
+} from 'react-icons/md';
+import { FaUserCircle } from 'react-icons/fa';
 import { FaMobileAlt } from 'react-icons/fa';
-import { WhiteLogo } from './Logo';
-import SelectCity from './SelectCity';
+import { Logo, WhiteLogo } from './Logo';
+import { SelectCity, SelectCityDesktop } from './SelectCity';
 import Categories from './Categories';
 import { Button } from './Button';
 import HamburgerMenu from '@/icons/HamburgerMenu';
@@ -15,26 +20,38 @@ import PayPlus from '@/icons/PayPlus';
 const Header = () => {
   return (
     <>
-      <header className='z-10 bg-primary py-1.5 shadow-md'>
-        <div className='flex px-4'>
-          <div className='flex items-center w-full'>
-            <div className='flex mr-4'>
-              <Link href='/#'>
+      <header className="z-10 bg-primary shadow-md lg:border-b lg:bg-white lg:shadow-none">
+        <div className="absolute inset-x-0 hidden h-2 bg-primary lg:block"></div>
+        <div className="flex px-4 py-1.5 lg:px-16 lg:py-7">
+          <div className="flex w-full items-center">
+            <div className="mr-4 flex lg:mr-6">
+              <Link href="/#">
                 <a>
-                  <WhiteLogo />
+                  <WhiteLogo className="lg:hidden" />
+                  <Logo className="hidden lg:block" />
                 </a>
               </Link>
             </div>
-            <div className='grow'>
+            <div className="flex grow items-center space-x-4">
               <SearchInput />
-            </div>
-            <div className='px-4'>
-              <SelectCity />
+              <SelectCity className="lg:hidden" />
+              <SelectCityDesktop className="hidden lg:block" />
             </div>
           </div>
-          <div className='ml-auto h-full'>
-            <div className='p-2 pr-0'>
+          <div className="ml-auto h-full">
+            <div className="py-2 pl-4 pr-0 lg:hidden">
               <MobileMenu />
+            </div>
+            <div className="hidden space-x-4 lg:flex">
+              <Button
+                variant="outline"
+                className="whitespace-nowrap font-semibold"
+              >
+                <MdPhoneAndroid size={20} className="mr-2" /> Download App
+              </Button>
+              <Button variant="outline" className="font-semibold">
+                <FaUserCircle size={20} className="mr-2" /> Login
+              </Button>
             </div>
           </div>
         </div>
@@ -48,19 +65,19 @@ export default Header;
 
 const SearchInput = () => {
   return (
-    <form action='' className='w-full'>
+    <form action="" className="w-full flex-shrink lg:max-w-[400px]">
       <div
-        id='input-wrapper'
-        className='flex items-center bg-white rounded-md w-full'
+        id="input-wrapper"
+        className="flex w-full items-center rounded-md bg-white lg:bg-gray-100"
       >
-        <span id='icon' className='p-2'>
-          <MdOutlineSearch className='w-5 h-5 text-primary' />
+        <span id="icon" className="p-2">
+          <MdOutlineSearch className="h-5 w-5 text-primary lg:h-6 lg:w-6" />
         </span>
 
         <input
-          type='text'
-          placeholder='Search for deals'
-          className='bg-transparent pl-0 border-0 text-sm placeholder:text-gray-300 w-full focus:ring-0'
+          type="text"
+          placeholder="Search for deals"
+          className="w-full border-0 bg-transparent pl-0 text-sm placeholder:text-gray-300 focus:ring-0 lg:py-2.5 lg:text-base"
         />
       </div>
     </form>
@@ -72,53 +89,53 @@ const MobileMenu = () => {
     <Popover>
       {({ open }) => (
         <>
-          <Popover.Button className='flex'>
+          <Popover.Button className="flex">
             {open ? <CloseMenu /> : <HamburgerMenu />}
           </Popover.Button>
-          <Popover.Overlay className='bg-black opacity-30 fixed inset-0 mt-12' />
+          <Popover.Overlay className="fixed inset-0 mt-12 bg-black opacity-30" />
 
           <Transition
             as={Fragment}
-            enter='transition ease-out duration-200'
-            enterFrom='opacity-0 -translate-y-1'
-            enterTo='opacity-100 -translate-y-0'
-            leave='transition ease-in duration-150'
-            leaveFrom='opacity-100 -translate-y-0'
-            leaveTo='opacity-0 -translate-y-1'
+            enter="transition ease-out duration-200"
+            enterFrom="opacity-0 -translate-y-1"
+            enterTo="opacity-100 -translate-y-0"
+            leave="transition ease-in duration-150"
+            leaveFrom="opacity-100 -translate-y-0"
+            leaveTo="opacity-0 -translate-y-1"
           >
-            <Popover.Panel className='absolute right-0 left-0 z-10 mt-4 bg-gray-100'>
-              <div className='bg-white p-4 mb-4 border-y'>
-                <p className='font-medium text-base text-center'>
+            <Popover.Panel className="absolute right-0 left-0 z-10 mt-4 bg-gray-100">
+              <div className="mb-4 border-y bg-white p-4">
+                <p className="text-center text-base font-medium">
                   Only Available on the App
                 </p>
-                <div className='flex justify-center gap-8 py-4'>
-                  <div className='flex flex-col items-center'>
+                <div className="flex justify-center gap-8 py-4">
+                  <div className="flex flex-col items-center">
                     <Deals width={32} height={32} />
-                    <span className='mt-2 block text-sm text-primary font-medium'>
+                    <span className="mt-2 block text-sm font-medium text-primary">
                       Rewards
                     </span>
                   </div>
-                  <div className='flex flex-col items-center'>
+                  <div className="flex flex-col items-center">
                     <PayPlus width={32} height={32} />
-                    <span className='mt-2 block text-sm text-primary font-medium'>
+                    <span className="mt-2 block text-sm font-medium text-primary">
                       eCards
                     </span>
                   </div>
                 </div>
                 <div>
                   <Button fullWidth>
-                    <FaMobileAlt size={16} className='mr-1' /> Get The App
+                    <FaMobileAlt size={16} className="mr-1" /> Get The App
                   </Button>
                 </div>
               </div>
-              <div className='bg-white p-4'>
-                <p className='font-medium text-base text-center'>
+              <div className="bg-white p-4">
+                <p className="text-center text-base font-medium">
                   Support our movement to save local businesses
                 </p>
-                <div className='mt-4'>
-                  <Button fullWidth variant='outline'>
-                    <span className='font-bold'> See Our Fave</span>
-                    <MdChevronRight size={20} className='ml-1' />
+                <div className="mt-4">
+                  <Button fullWidth variant="outline">
+                    <span className="font-bold"> See Our Fave</span>
+                    <MdChevronRight size={20} className="ml-1" />
                   </Button>
                 </div>
               </div>

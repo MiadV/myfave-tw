@@ -3,6 +3,7 @@ import { Listbox, Transition } from '@headlessui/react';
 import {
   MdArrowBack,
   MdCheckCircle,
+  MdOutlineArrowDropDown,
   MdRadioButtonUnchecked,
 } from 'react-icons/md';
 import MalaysiaFlag from '@/icons/MalaysiaFlag';
@@ -26,32 +27,32 @@ const cities = [
   { name: 'Muar' },
 ];
 
-const SelectCity = () => {
+export const SelectCity = ({ className }: { className: string }) => {
   const [selected, setSelected] = useState(cities[0]);
   return (
     <Listbox value={selected} onChange={setSelected}>
-      <div>
-        <Listbox.Button className='flex items-center'>
+      <div className={className}>
+        <Listbox.Button className="flex items-center">
           <MalaysiaFlag />
         </Listbox.Button>
         <Transition
           as={Fragment}
-          leave='transition ease-in duration-100'
-          leaveFrom='opacity-100'
-          leaveTo='opacity-0'
+          leave="transition ease-in duration-100"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
-          <Listbox.Options className='absolute inset-0 w-full overflow-auto bg-gray-100  z-10'>
-            <div className='fixed flex z-10 w-full bg-white justify-center p-4 text-sm border-b shadow-md'>
-              <Listbox.Button className='flex items-center absolute left-2'>
+          <Listbox.Options className="absolute inset-0 z-10 w-full overflow-auto bg-gray-100">
+            <div className="fixed z-10 flex w-full justify-center border-b bg-white p-4 text-sm shadow-md">
+              <Listbox.Button className="absolute left-2 flex items-center">
                 <MdArrowBack size={20} />
               </Listbox.Button>
               <span>Select City</span>
             </div>
 
-            <div className='mt-14 bg-white text-sm'>
-              <div className='flex items-center p-3 border-b border-gray-100'>
+            <div className="mt-14 bg-white text-sm">
+              <div className="flex items-center border-b border-gray-100 p-3">
                 <MalaysiaFlag width={16} height={16} />{' '}
-                <span className='ml-1 font-semibold uppercase text-xs'>
+                <span className="ml-1 text-xs font-semibold uppercase">
                   Malaysia
                 </span>
               </div>
@@ -59,12 +60,12 @@ const SelectCity = () => {
                 <Listbox.Option
                   key={cityIdx}
                   value={city}
-                  className='relative flex items-center p-3 border-b border-gray-100'
+                  className="relative flex items-center border-b border-gray-100 p-3"
                 >
                   {({ selected }) => (
-                    <div className='flex items-center w-full'>
-                      <span className='block truncate'>{city.name}</span>
-                      <span className='ml-auto text-primary'>
+                    <div className="flex w-full items-center">
+                      <span className="block truncate">{city.name}</span>
+                      <span className="ml-auto text-primary">
                         {selected ? (
                           <MdCheckCircle size={20} />
                         ) : (
@@ -83,4 +84,54 @@ const SelectCity = () => {
   );
 };
 
-export default SelectCity;
+export const SelectCityDesktop = ({ className }: { className: string }) => {
+  const [selected, setSelected] = useState(cities[0]);
+  return (
+    <Listbox value={selected} onChange={setSelected}>
+      <div className={className}>
+        <Listbox.Button className="flex items-center lg:rounded-lg lg:border lg:p-2">
+          <MalaysiaFlag className="h-7 w-7" />
+          <span className="ml-1 text-sm">{selected.name}</span>
+          <MdOutlineArrowDropDown className="text-primary" size={24} />
+        </Listbox.Button>
+        <Transition
+          as={Fragment}
+          leave="transition ease-in duration-100"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <Listbox.Options className="absolute z-10 mt-2 max-h-56 w-64 overflow-auto rounded-lg border shadow-xl">
+            <div className="bg-white text-sm">
+              <div className="flex items-center border-b border-gray-100 p-3">
+                <MalaysiaFlag width={16} height={16} />{' '}
+                <span className="ml-1 text-xs font-semibold uppercase">
+                  Malaysia
+                </span>
+              </div>
+              {cities.map((city, cityIdx) => (
+                <Listbox.Option
+                  key={cityIdx}
+                  value={city}
+                  className="relative flex cursor-pointer items-center border-b border-gray-100 p-3"
+                >
+                  {({ selected }) => (
+                    <div className="flex w-full items-center">
+                      <span className="block truncate">{city.name}</span>
+                      <span className="ml-auto text-primary">
+                        {selected ? (
+                          <MdCheckCircle size={20} />
+                        ) : (
+                          <MdRadioButtonUnchecked size={20} />
+                        )}
+                      </span>
+                    </div>
+                  )}
+                </Listbox.Option>
+              ))}
+            </div>
+          </Listbox.Options>
+        </Transition>
+      </div>
+    </Listbox>
+  );
+};

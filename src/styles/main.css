@@ -21,3 +21,11 @@
   opacity: var(--swiper-pagination-bullet-opacity, 1);
   background: theme('colors.primary');
 }
+
+#todayPromos .swiper-slide {
+  opacity: 0.5;
+}
+
+#todayPromos .swiper-slide-active {
+  opacity: 1;
+}

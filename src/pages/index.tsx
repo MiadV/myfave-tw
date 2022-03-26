@@ -8,7 +8,7 @@ const Home: NextPage = () => {
     <>
       <SEO />
       <Header />
-      <div className='py-6'>
+      <div className="mx-auto max-w-screen-lg py-6">
         <TodayPromos />
       </div>
     </>

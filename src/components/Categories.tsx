@@ -5,21 +5,26 @@ import { CategoriesList } from '@/mockData';
 
 const Categories = () => {
   return (
-    <div className='bg-white border-b'>
+    <div className="flex justify-center border-b bg-white">
       <Swiper
         modules={[FreeMode, Scrollbar, Mousewheel]}
-        direction='horizontal'
+        direction="horizontal"
         freeMode={true}
         mousewheel={true}
         scrollbar={{ draggable: true, hide: true }}
-        slidesPerView='auto'
+        slidesPerView="auto"
         spaceBetween={8}
-        className='!py-3'
+        breakpoints={{
+          768: {
+            spaceBetween: 16,
+          },
+        }}
+        className="!py-3"
       >
         {CategoriesList.map((cat) => (
-          <SwiperSlide key={cat.title} className='!w-auto'>
-            <Link href='/'>
-              <a className='flex flex-col items-center text-sm px-3 space-y-1'>
+          <SwiperSlide key={cat.title} className="!w-auto">
+            <Link href="/">
+              <a className="flex flex-col items-center space-y-1 px-3 text-sm md:px-4 lg:px-6">
                 {<cat.icon height={30} />}
                 <span>{cat.title}</span>
               </a>
