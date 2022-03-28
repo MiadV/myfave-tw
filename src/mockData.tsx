@@ -60,3 +60,30 @@ export const todayPromos = [
     img: '/images/a4.jpg',
   },
 ];
+
+export const dealsOfDay = [
+  {
+    id: 1,
+    title: '1-Hour Deep Pore Cleansing with Honey Peel',
+    normalPrice: 'RM160.00',
+    afterPrice: 'RM48.00',
+    discountPercent: 68,
+    vendor: {
+      title: 'Beauty Saloon',
+      address: 'G-00, Test Shopping Centre and 3 other outlets',
+    },
+    img: '/images/b1.jpg',
+  },
+  {
+    id: 2,
+    title: '1-Hour Pure Excellence Skin Revival Facial Treatment',
+    normalPrice: 'RM160.00',
+    afterPrice: 'RM48.00',
+    discountPercent: 70,
+    vendor: {
+      title: 'Beauty Saloon',
+      address: 'G-00, Test Shopping Centre and 3 other outlets',
+    },
+    img: '/images/b2.jpg',
+  },
+];

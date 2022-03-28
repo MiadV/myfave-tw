@@ -30,6 +30,10 @@ const TodayPromos = () => {
               slidesPerView: 1.4,
               spaceBetween: 28,
             },
+            1024: {
+              slidesPerView: 1.6,
+              spaceBetween: 28,
+            },
           }}
           className="px-4 pb-6"
         >
@@ -40,7 +44,6 @@ const TodayPromos = () => {
                   <Image
                     src={item.img}
                     alt="promotion"
-                    objectFit="cover"
                     width={800}
                     height={373}
                   />

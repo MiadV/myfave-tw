@@ -20,7 +20,7 @@ import PayPlus from '@/icons/PayPlus';
 const Header = () => {
   return (
     <>
-      <header className="z-10 bg-primary shadow-md lg:border-b lg:bg-white lg:shadow-none">
+      <header className="sticky top-0 z-10 bg-primary shadow-md lg:border-b lg:bg-white lg:shadow-none">
         <div className="absolute inset-x-0 hidden h-2 bg-primary lg:block"></div>
         <div className="flex px-4 py-1.5 lg:px-16 lg:py-7">
           <div className="flex w-full items-center">
@@ -55,8 +55,9 @@ const Header = () => {
             </div>
           </div>
         </div>
+        <Categories className="hidden border-t lg:flex" />
       </header>
-      <Categories />
+      <Categories className="lg:hidden" />
     </>
   );
 };

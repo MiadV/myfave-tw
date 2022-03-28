@@ -40,7 +40,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     let btnSolidPrimary = ['bg-primary text-white focus:ring-primary'];
     let btnSolidSecondary = ['bg-secondary text-white focus:ring-secondary'];
     let btnOutlinePrimary = [
-      'border border-primary focus:ring-primary text-primary',
+      'border border-primary focus:ring-primary text-primary hover:bg-gray-50 transition-all duration-150',
     ];
     let btnOutlineSecondary = [
       'border border-secondary focus:ring-secondary text-secondary',

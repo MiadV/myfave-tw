@@ -3,9 +3,9 @@ import { FreeMode, Mousewheel, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { CategoriesList } from '@/mockData';
 
-const Categories = () => {
+const Categories = ({ className }: { className?: string }) => {
   return (
-    <div className="flex justify-center border-b bg-white">
+    <div className={`flex justify-center border-b bg-white ${className}`}>
       <Swiper
         modules={[FreeMode, Scrollbar, Mousewheel]}
         direction="horizontal"
