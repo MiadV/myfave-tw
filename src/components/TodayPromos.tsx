@@ -6,7 +6,7 @@ import { todayPromos } from '@/mockData';
 
 const TodayPromos = () => {
   return (
-    <div className="bg-white pb-4 lg:rounded-xl">
+    <section className="bg-white pb-4 lg:rounded-xl">
       <div className="p-3 lg:px-5 lg:pt-5">
         <h4 className="text-lg font-medium">{`Today's Promos`}</h4>
       </div>
@@ -53,7 +53,7 @@ const TodayPromos = () => {
           ))}
         </Swiper>
       </div>
-    </div>
+    </section>
   );
 };
 

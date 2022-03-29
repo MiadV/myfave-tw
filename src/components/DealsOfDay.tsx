@@ -8,7 +8,7 @@ import { MdWatchLater } from 'react-icons/md';
 
 const DealsOfDay = () => {
   return (
-    <div className="bg-white p-3 lg:rounded-xl lg:px-8 lg:pt-5">
+    <section className="bg-white p-3 lg:rounded-xl lg:px-8 lg:pt-5">
       <div className="pb-3">
         <h4 className="text-lg font-medium">{`Deals Of The Day`}</h4>
       </div>
@@ -76,7 +76,7 @@ const DealsOfDay = () => {
           ))}
         </Swiper>
       </div>
-    </div>
+    </section>
   );
 };
 
