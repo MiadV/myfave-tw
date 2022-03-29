@@ -41,14 +41,13 @@ export const SelectCity = ({ className }: { className: string }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className="absolute inset-0 z-10 w-full overflow-auto bg-gray-100">
+          <Listbox.Options className="absolute inset-0 z-10 h-screen w-full overflow-auto bg-gray-100">
             <div className="fixed z-10 flex w-full justify-center border-b bg-white p-4 text-sm shadow-md">
               <Listbox.Button className="absolute left-2 flex items-center">
                 <MdArrowBack size={20} />
               </Listbox.Button>
               <span>Select City</span>
             </div>
-
             <div className="mt-14 bg-white text-sm">
               <div className="flex items-center border-b border-gray-100 p-3">
                 <MalaysiaFlag width={16} height={16} />{' '}
