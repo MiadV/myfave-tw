@@ -1,30 +1,79 @@
 import { useRouter } from 'next/router';
-import DealIcon from '@/icons/DealIcon';
-import FavePayIcon from '@/icons/FavePayIcon';
-import HomeIcon from '@/icons/HomeIcon';
-import ProfileIcon from '@/icons/ProfileIcon';
-import ScanIcon from '@/icons/ScanIcon';
 import Link from 'next/link';
+import { GradientLogo } from './Logo';
+import { footerItems, footerLinks, footerSocialLinks } from '@/mockData';
 
 export const Footer = ({ className }: { className?: string }) => {
-  return <footer className={`${className}`}>footer</footer>;
+  return (
+    <footer className={`${className} flex bg-white font-Nunito`}>
+      <div className="w-full px-4 py-1.5 lg:px-16 lg:py-7">
+        <div className="grid max-w-screen-lg grid-cols-4">
+          <div>
+            <GradientLogo />
+            <div className="mt-8 flex space-x-4">
+              {footerSocialLinks.map((item, i) => (
+                <a
+                  key={i}
+                  href={item.href}
+                  className="flex h-6 w-6 items-center justify-center rounded-full bg-primary p-1.5 text-white"
+                >
+                  {item.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+          {Object.keys(footerLinks).map((col) => (
+            <div key={col} className="space-y-2">
+              <span className="text-sm font-bold">{col}</span>
+              <ul className="space-y-2">
+                {footerLinks[col].map((item) => (
+                  <li key={item.title}>
+                    <Link href={item.href}>
+                      <a className="text-sm transition-all hover:text-primary">
+                        {item.title}
+                      </a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div
+          id="footer-copyright"
+          className="mt-2 flex justify-between border-t py-4 text-sm"
+        >
+          <div>
+            Github{' '}
+            <a
+              href="https://github.com/miadv"
+              className="transition-all hover:text-primary hover:underline"
+            >
+              Miad Vosoughi
+            </a>
+          </div>
+          <div className="flex space-x-8">
+            <Link href="/">
+              <a className="transition-all hover:text-primary hover:underline">
+                Privacy
+              </a>
+            </Link>
+            <Link href="/">
+              <a className="transition-all hover:text-primary hover:underline">
+                Terms
+              </a>
+            </Link>
+            <Link href="/">
+              <a className="transition-all hover:text-primary hover:underline">
+                Sitemap
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
-
-const footerItems = [
-  { title: 'Home', icon: <HomeIcon className="fill-current" />, href: '/' },
-  {
-    title: 'Collections',
-    icon: <DealIcon className="fill-current" />,
-    href: '/#',
-  },
-  { title: 'Scan', icon: <ScanIcon className="fill-current" />, href: '/#' },
-  {
-    title: 'FavePay',
-    icon: <FavePayIcon className="fill-current" />,
-    href: '/#',
-  },
-  { title: 'Me', icon: <ProfileIcon className="fill-current" />, href: '/#' },
-];
 
 export const MobileFooter = ({ className }: { className?: string }) => {
   const router = useRouter();

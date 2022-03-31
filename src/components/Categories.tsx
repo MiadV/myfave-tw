@@ -7,6 +7,7 @@ const Categories = ({ className }: { className?: string }) => {
   return (
     <div className={`flex justify-center border-b bg-white ${className}`}>
       <Swiper
+        id="cetegories"
         modules={[FreeMode, Scrollbar, Mousewheel]}
         direction="horizontal"
         freeMode={true}

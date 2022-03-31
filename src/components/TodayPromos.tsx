@@ -12,7 +12,7 @@ const TodayPromos = () => {
       </div>
       <div>
         <Swiper
-          id="todayPromos"
+          id="TodayPromos"
           modules={[Pagination]}
           loop={true}
           pagination={{
