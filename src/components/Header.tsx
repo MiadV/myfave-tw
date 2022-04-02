@@ -16,11 +16,12 @@ import HamburgerMenu from '@/icons/HamburgerMenu';
 import CloseMenu from '@/icons/CloseMenu';
 import Deals from '@/icons/Deals';
 import PayPlus from '@/icons/PayPlus';
+import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   return (
     <>
-      <header className="sticky top-0 z-10 bg-primary shadow-md lg:border-b lg:bg-white lg:shadow-none">
+      <header className="sticky top-0 z-10 bg-primary shadow-md lg:border-b lg:bg-white lg:shadow-none lg:dark:border-gray-400 lg:dark:bg-slate-800">
         <div className="absolute inset-x-0 hidden h-2 bg-primary lg:block"></div>
         <div className="flex px-4 py-1.5 lg:px-16 lg:py-7">
           <div className="flex w-full items-center">
@@ -39,7 +40,8 @@ const Header = () => {
             </div>
           </div>
           <div className="ml-auto h-full">
-            <div className="py-2 pl-4 pr-0 lg:hidden">
+            <div className="flex items-center py-2 pl-4 pr-0 lg:hidden">
+              <ThemeToggle className="mr-2 flex h-6 w-6 items-center justify-center rounded-full text-white" />
               <MobileMenu />
             </div>
             <div className="hidden space-x-4 lg:flex">
@@ -52,10 +54,11 @@ const Header = () => {
               <Button variant="outline" className="font-semibold">
                 <FaUserCircle size={20} className="mr-2" /> Login
               </Button>
+              <ThemeToggle className="flex h-10 w-10 items-center justify-center rounded-full border border-primary text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-white" />
             </div>
           </div>
         </div>
-        <Categories className="hidden border-t lg:flex" />
+        <Categories className="hidden border-t dark:border-gray-500 lg:flex" />
       </header>
       <Categories className="lg:hidden" />
     </>
@@ -69,16 +72,16 @@ const SearchInput = () => {
     <form action="" className="w-full flex-shrink lg:max-w-[400px]">
       <div
         id="input-wrapper"
-        className="flex w-full items-center rounded-md bg-white lg:bg-gray-100"
+        className="flex w-full items-center rounded-md bg-white focus-within:outline-none focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 dark:bg-gray-600 dark:bg-white/20 lg:bg-gray-100"
       >
         <span id="icon" className="p-2">
-          <MdOutlineSearch className="h-5 w-5 text-primary lg:h-6 lg:w-6" />
+          <MdOutlineSearch className="h-5 w-5 text-primary dark:text-white lg:h-6 lg:w-6" />
         </span>
 
         <input
           type="text"
           placeholder="Search for deals"
-          className="w-full border-0 bg-transparent pl-0 text-sm placeholder:text-gray-300 focus:ring-0 lg:py-2.5 lg:text-base"
+          className="w-full border-0 bg-transparent pl-0 text-sm placeholder:text-gray-300 focus:ring-0 dark:placeholder:text-gray-200 lg:py-2.5 lg:text-base"
         />
       </div>
     </form>
@@ -104,8 +107,8 @@ const MobileMenu = () => {
             leaveFrom="opacity-100 -translate-y-0"
             leaveTo="opacity-0 -translate-y-1"
           >
-            <Popover.Panel className="absolute right-0 left-0 z-10 mt-4 bg-gray-100">
-              <div className="mb-4 border-y bg-white p-4">
+            <Popover.Panel className="absolute right-0 left-0 z-10 mt-4 bg-gray-100 dark:bg-gray-500">
+              <div className="mb-4 border-y bg-white p-4 dark:bg-gray-500">
                 <p className="text-center text-base font-medium">
                   Only Available on the App
                 </p>
@@ -129,7 +132,7 @@ const MobileMenu = () => {
                   </Button>
                 </div>
               </div>
-              <div className="bg-white p-4">
+              <div className="bg-white p-4 dark:bg-gray-500">
                 <p className="text-center text-base font-medium">
                   Support our movement to save local businesses
                 </p>

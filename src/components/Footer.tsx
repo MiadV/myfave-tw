@@ -5,9 +5,11 @@ import { footerItems, footerLinks, footerSocialLinks } from '@/mockData';
 
 export const Footer = ({ className }: { className?: string }) => {
   return (
-    <footer className={`${className} flex bg-white font-Nunito`}>
-      <div className="w-full px-4 py-1.5 lg:px-16 lg:py-7">
-        <div className="grid max-w-screen-lg grid-cols-4">
+    <footer
+      className={`${className} flex bg-gray-50 font-Nunito dark:bg-slate-800`}
+    >
+      <div className="w-full px-4 py-1.5 lg:px-16 lg:pt-10">
+        <div className="mx-auto grid max-w-screen-lg grid-cols-4">
           <div>
             <GradientLogo />
             <div className="mt-8 flex space-x-4">
@@ -41,7 +43,7 @@ export const Footer = ({ className }: { className?: string }) => {
         </div>
         <div
           id="footer-copyright"
-          className="mt-2 flex justify-between border-t py-4 text-sm"
+          className="mt-4 flex justify-between border-t py-4 text-sm dark:border-gray-600"
         >
           <div>
             Github{' '}
@@ -79,7 +81,7 @@ export const MobileFooter = ({ className }: { className?: string }) => {
   const router = useRouter();
   return (
     <div
-      className={`${className} fixed inset-x-0 bottom-0 z-10 bg-white px-4 py-2 shadow-md`}
+      className={`${className} fixed inset-x-0 bottom-0 z-10 bg-white px-4 py-2 shadow-md dark:bg-slate-800`}
     >
       <nav className="flex justify-between">
         {footerItems.map((item) => (

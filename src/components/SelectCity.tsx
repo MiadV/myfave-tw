@@ -88,7 +88,7 @@ export const SelectCityDesktop = ({ className }: { className: string }) => {
   return (
     <Listbox value={selected} onChange={setSelected}>
       <div className={className}>
-        <Listbox.Button className="flex items-center lg:rounded-lg lg:border lg:p-2">
+        <Listbox.Button className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 lg:rounded-lg lg:border lg:border-primary lg:p-2">
           <MalaysiaFlag className="h-7 w-7" />
           <span className="ml-1 text-sm">{selected.name}</span>
           <MdOutlineArrowDropDown className="text-primary" size={24} />
@@ -99,9 +99,9 @@ export const SelectCityDesktop = ({ className }: { className: string }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className="absolute z-10 mt-2 max-h-56 w-64 overflow-auto rounded-lg border shadow-xl">
-            <div className="bg-white text-sm">
-              <div className="flex items-center border-b border-gray-100 p-3">
+          <Listbox.Options className="absolute z-10 mt-2 max-h-56 w-64 overflow-auto rounded-lg border shadow-xl dark:border-gray-500">
+            <div className="bg-white text-sm dark:bg-slate-600">
+              <div className="flex items-center border-b border-gray-100 p-3 dark:border-gray-400">
                 <MalaysiaFlag width={16} height={16} />{' '}
                 <span className="ml-1 text-xs font-semibold uppercase">
                   Malaysia
@@ -111,7 +111,7 @@ export const SelectCityDesktop = ({ className }: { className: string }) => {
                 <Listbox.Option
                   key={cityIdx}
                   value={city}
-                  className="relative flex cursor-pointer items-center border-b border-gray-100 p-3"
+                  className="relative flex cursor-pointer items-center border-b border-gray-100 p-3 dark:border-gray-400"
                 >
                   {({ selected }) => (
                     <div className="flex w-full items-center">

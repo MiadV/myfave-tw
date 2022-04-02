@@ -8,7 +8,7 @@ import { MdWatchLater } from 'react-icons/md';
 
 const DealsOfDay = () => {
   return (
-    <section className="bg-white p-3 lg:rounded-xl lg:px-8 lg:pt-5">
+    <section className="bg-white p-3 dark:bg-slate-600 lg:rounded-xl lg:px-8 lg:pt-5">
       <div className="pb-3">
         <h4 className="text-lg font-medium">{`Deals Of The Day`}</h4>
       </div>
@@ -30,7 +30,7 @@ const DealsOfDay = () => {
         >
           {dealsOfDay.map((item, i) => (
             <SwiperSlide key={i}>
-              <article className="flex flex-col overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 md:flex-row md:gap-4 md:border-0">
+              <article className="flex flex-col overflow-hidden rounded-xl border border-slate-200 dark:border-gray-400 dark:bg-slate-800 md:flex-row md:gap-4 md:border-0">
                 <Link href="/#">
                   <a className="relative flex bg-gray-200 dark:bg-slate-700 md:overflow-hidden md:rounded-xl">
                     <span className="absolute top-3 left-3 z-10 hidden rounded-lg bg-primary px-2 py-1 text-sm text-white md:block">{`You save ${item.discountPercent}%`}</span>

@@ -5,7 +5,9 @@ import { CategoriesList } from '@/mockData';
 
 const Categories = ({ className }: { className?: string }) => {
   return (
-    <div className={`flex justify-center border-b bg-white ${className}`}>
+    <div
+      className={`flex justify-center border-b bg-white dark:border-gray-500 dark:bg-slate-600 ${className}`}
+    >
       <Swiper
         id="cetegories"
         modules={[FreeMode, Scrollbar, Mousewheel]}
@@ -26,7 +28,12 @@ const Categories = ({ className }: { className?: string }) => {
           <SwiperSlide key={cat.title} className="!w-auto">
             <Link href="/">
               <a className="flex flex-col items-center space-y-1 px-3 text-sm md:px-4 lg:px-6">
-                {<cat.icon height={30} />}
+                {
+                  <cat.icon
+                    height={30}
+                    className="dark:h-8 dark:w-8 dark:rounded-full dark:bg-white/40 dark:p-1"
+                  />
+                }
                 <span>{cat.title}</span>
               </a>
             </Link>

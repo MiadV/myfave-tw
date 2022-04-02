@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const InstallAppCard = () => {
   return (
-    <section className="bg-white px-4 py-8 lg:rounded-xl">
+    <section className="bg-white px-4 py-8 dark:bg-slate-600 lg:rounded-xl">
       <div className="mx-auto sm:max-w-xs sm:text-center">
         <span className="mb-4 block text-base font-bold">
           Start Saving Today On The Fave App

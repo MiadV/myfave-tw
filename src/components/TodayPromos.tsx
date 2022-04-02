@@ -6,7 +6,7 @@ import { todayPromos } from '@/mockData';
 
 const TodayPromos = () => {
   return (
-    <section className="bg-white pb-4 lg:rounded-xl">
+    <section className="bg-white pb-4 dark:bg-slate-600 lg:rounded-xl">
       <div className="p-3 lg:px-5 lg:pt-5">
         <h4 className="text-lg font-medium">{`Today's Promos`}</h4>
       </div>
@@ -40,7 +40,7 @@ const TodayPromos = () => {
           {todayPromos.map((item, i) => (
             <SwiperSlide key={i}>
               <Link href="/#">
-                <a className="flex overflow-hidden rounded-xl border border-slate-200 bg-gray-200 dark:border-slate-800 dark:bg-slate-700">
+                <a className="flex overflow-hidden rounded-xl border border-slate-200 bg-gray-200 dark:border-gray-500 dark:bg-slate-700">
                   <Image
                     src={item.img}
                     alt="promotion"

@@ -38,9 +38,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     // handle variants
     let btnSolidPrimary = ['bg-primary text-white focus:ring-primary'];
-    let btnSolidSecondary = ['bg-secondary text-white focus:ring-secondary'];
+    let btnSolidSecondary = [
+      'bg-secondary text-white focus:ring-secondary hover:bg-secondary/90 transition-all duration-150',
+    ];
     let btnOutlinePrimary = [
-      'border border-primary focus:ring-primary text-primary hover:bg-gray-50 transition-all duration-150',
+      'border border-primary focus:ring-primary text-primary dark:text-white hover:bg-gray-50 dark:hover:bg-primary/50 transition-all duration-150',
     ];
     let btnOutlineSecondary = [
       'border border-secondary focus:ring-secondary text-secondary',
