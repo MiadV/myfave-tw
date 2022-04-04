@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Pagination } from 'swiper';
+import { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { todayPromos } from '@/mockData';
 
@@ -13,13 +13,13 @@ const TodayPromos = () => {
       <div>
         <Swiper
           id="TodayPromos"
-          modules={[Pagination]}
+          modules={[Pagination, Autoplay]}
           loop={true}
           pagination={{
             clickable: true,
           }}
           autoplay={{
-            delay: 2500,
+            delay: 4000,
             disableOnInteraction: false,
           }}
           centeredSlides={true}

@@ -88,9 +88,9 @@ export const SelectCityDesktop = ({ className }: { className: string }) => {
   return (
     <Listbox value={selected} onChange={setSelected}>
       <div className={className}>
-        <Listbox.Button className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 lg:rounded-lg lg:border lg:border-primary lg:p-2">
-          <MalaysiaFlag className="h-7 w-7" />
-          <span className="ml-1 text-sm">{selected.name}</span>
+        <Listbox.Button className="flex shrink-0 items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 lg:rounded-lg lg:border lg:border-primary lg:p-2">
+          <MalaysiaFlag className="h-7 w-7 shrink-0 " />
+          <span className="ml-1 shrink-0 text-sm ">{selected.name}</span>
           <MdOutlineArrowDropDown className="text-primary" size={24} />
         </Listbox.Button>
         <Transition
